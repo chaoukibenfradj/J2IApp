@@ -1,0 +1,68 @@
+<div class="container">
+  <form [formGroup]="signupForm" (ngSubmit)="submitSignupForm()">
+    <div class="login-container">
+      <div class="row">
+        <div class="col-md-12">
+          <div>
+
+            <img src="assets/j2i.jpg" class="logo">
+
+          </div>
+        </div>
+
+
+
+        <div class="col-md-12" style="margin-bottom: 40px;">
+          <div class="centerClass">
+
+            <h2 style="font-weight: 600">Signup Form</h2>
+
+          </div>
+        </div>
+
+        <div class="col-md-12" *ngIf="succMessage.length==0">
+          <div class="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="Name" name="name" [(ngModel)]="userCreds.pseudo" required class="form-control" formControlName="pseudo">
+            <div class="error" *ngIf="this.signupForm.get('pseudo').touched && this.signupForm.get('pseudo').invalid">Invalid !</div>
+          </div>
+        </div>
+
+        <div class="col-md-12" *ngIf="succMessage.length==0">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="E-mail" name="email" [(ngModel)]="userCreds.email" required class="form-control" formControlName="email">
+            <div class="error" *ngIf="this.signupForm.get('email').touched && this.signupForm.get('email').invalid">Invalid E-mail !</div>
+          </div>
+        </div>
+
+        <div class="col-md-12" *ngIf="succMessage.length==0">
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" placeholder="Password" name="pass" [(ngModel)]="userCreds.password" required class="form-control"
+              formControlName="password">
+            <div class="error" *ngIf="this.signupForm.get('password').touched && this.signupForm.get('password').invalid">Invalid Password !</div>
+          </div>
+        </div>
+        <div class="col-md-12" *ngIf="succMessage.length==0">
+          <div class="form-group">
+            <button type="submit" class="btn btn-success pull-right">Signup</button>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+
+          <div class="alert alert-danger" *ngIf="errMessage.length>0">{{errMessage}}</div>
+
+          <div class="alert alert-success" *ngIf="succMessage.length>0">{{succMessage}}</div>
+
+
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="loading" *ngIf="showLoading">Loading&#8230;</div>
